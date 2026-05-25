@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good News Auto Service LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #5BC4F0;
+    --red-dark: #35AFDF;
+    --red-light: #EAF7FD;
+    --cream: #FFFBEC;
+    --cream-dark: #FFF3C4;
+    --dark: #2A5F7A;
+    --dark-mid: #3A7A9A;
+    --mid: #7AAFC8;
+    --light: #FFFFFF;
+    --grey-text: #B8C8D4;
+    --yellow: #F5C518;
+    --yellow-dark: #D4A90E;
+    --radius: 4px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--dark);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--light);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+
+  .nav-logo span { color: var(--red); }
+
+  nav ul {
+    list-style: none;
+    display: flex; gap: 32px;
+  }
+
+  nav ul a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--grey-text);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--light); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--light) !important;
+    padding: 8px 20px;
+    border-radius: var(--radius);
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--red-dark) !important; color: var(--light) !important; }
+
+  /* ===== HERO ===== */
+  #hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex; flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    padding-top: 64px;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 22vw, 320px);
+    color: rgba(255,255,255,0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -2px;
+  }
+
+  .hero-inner {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 80px 40px 60px;
+    position: relative;
+    z-index: 2;
+    gap: 60px;
+  }
+
+  .hero-content { flex: 1; max-width: 600px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,197,24,0.15);
+    border: 1px solid rgba(245,197,24,0.4);
+    color: #F5C518;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--yellow);
+    border-radius: 50%;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 8vw, 112px);
+    line-height: 0.92;
+    color: var(--light);
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--grey-text);
+    max-width: 440px;
+    margin-bottom: 40px;
+  }
+
+  .hero-btns {
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--red);
+    color: var(--light);
+    padding: 14px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.5); color: var(--light); }
+
+  .hero-stats {
+    display: flex; gap: 40px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--light);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .stat-num span { color: var(--red); }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 4px;
+  }
+
+  .hero-visual {
+    flex: 0 0 auto;
+    display: flex; flex-direction: column; gap: 12px;
+    width: 300px;
+    opacity: 0;
+    animation: fadeInRight 0.8s 0.4s ease forwards;
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .card-mini {
+    background: var(--dark-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .card-mini-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: rgba(245,197,24,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .card-mini-label {
+    font-size: 13px;
+    color: var(--grey-text);
+    margin-bottom: 2px;
+  }
+
+  .card-mini-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--light);
+  }
+
+  .card-mini-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #3EBF7A;
+    margin-left: auto;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(62,191,122,0.2);
+  }
+
+  /* ===== TICKER ===== */
+  .ticker {
+    background: var(--yellow);
+    overflow: hidden;
+    padding: 12px 0;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 30s linear infinite;
+    gap: 0;
+  }
+
+  .ticker-item {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: rgba(13,43,69,0.85);
+    padding: 0 32px;
+  }
+
+  .ticker-dot {
+    width: 4px; height: 4px;
+    background: rgba(13,43,69,0.4);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 100px 40px;
+  }
+
+  .section-cream { background: var(--cream); }
+  .section-dark { background: var(--dark); }
+  .section-white { background: var(--light); }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+
+  .section-tag-light {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 68px);
+    line-height: 0.95;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px;
+  }
+
+  h2.dark { color: var(--dark); }
+  h2.light { color: var(--light); }
+
+  h2 span { color: var(--red); }
+
+  .section-sub {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--mid);
+    max-width: 540px;
+    margin-bottom: 60px;
+  }
+
+  .section-sub-light {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--grey-text);
+    max-width: 540px;
+    margin-bottom: 60px;
+  }
+
+  /* ===== SERVICES ===== */
+  #services .container { max-width: 1100px; margin: 0 auto; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+    border: 2px solid var(--dark);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--cream-dark);
+    padding: 36px 30px;
+    border-right: 2px solid var(--dark);
+    transition: background 0.25s;
+    cursor: default;
+  }
+
+  .service-card:last-child { border-right: none; }
+
+  .service-card:hover { background: var(--dark); }
+
+  .service-card:hover .service-name { color: var(--light); }
+  .service-card:hover .service-desc { color: rgba(255,255,255,0.5); }
+  .service-card:hover .service-icon-wrap { background: rgba(245,197,24,0.2); }
+
+  .service-icon-wrap {
+    width: 52px; height: 52px;
+    background: rgba(13,43,69,0.1);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+    transition: background 0.25s;
+  }
+
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    color: var(--dark);
+    margin-bottom: 10px;
+    transition: color 0.25s;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--mid);
+    transition: color 0.25s;
+  }
+
+  .full-service-banner {
+    margin-top: 24px;
+    background: var(--dark);
+    border-radius: 8px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .fsb-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .fsb-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--light);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .fsb-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--grey-text);
+    max-width: 560px;
+  }
+
+  /* ===== WHY US ===== */
+  #why .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .why-left {}
+
+  .why-right {
+    display: flex; flex-direction: column; gap: 0;
+  }
+
+  .why-item {
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+
+  .why-item:first-child { padding-top: 0; }
+
+  .why-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--yellow);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 48px;
+  }
+
+  .why-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--light);
+    margin-bottom: 6px;
+  }
+
+  .why-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--grey-text);
+  }
+
+  /* ===== CONTACT ===== */
+  #contact .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .contact-card {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact-card .info-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+    background: none;
+    width: auto; height: auto;
+  }
+
+  .contact-card .info-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--mid);
+    font-weight: 600;
+  }
+
+  .contact-card .info-value {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  .contact-card .info-value a {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  .contact-card .info-value a:hover {
+    text-decoration: underline;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  .hours-table td { padding: 5px 0; }
+  .hours-table td:first-child { color: var(--mid); }
+  .hours-table td:last-child { text-align: right; font-weight: 500; color: var(--dark); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #111110;
+    padding: 60px 40px 36px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 32px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    color: var(--light);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+
+  .footer-logo span { color: var(--red); }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--grey-text);
+    line-height: 1.7;
+    max-width: 280px;
+  }
+
+  .footer-heading {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 18px;
+  }
+
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--light); }
+
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ===== HERO ANIMATION ===== */
+  .hero-content > * {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero-badge { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.2s; }
+  .hero-desc { animation-delay: 0.3s; }
+  .hero-btns { animation-delay: 0.4s; }
+  .hero-stats { animation-delay: 0.5s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 860px) {
+    nav ul { display: none; }
+    nav { padding: 0 24px; }
+
+    .hero-inner {
+      flex-direction: column;
+      padding: 60px 24px 50px;
+      gap: 40px;
+    }
+
+    .hero-visual { width: 100%; }
+
+    section { padding: 70px 24px; }
+
+    #why .container { grid-template-columns: 1fr; gap: 50px; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+
+    .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Good News <span>Auto</span> Service LLC</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">AUTO</div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Hillsboro's Full-Service Auto Shop</div>
+      <h1>Good News<br>for your <em>car.</em></h1>
+      <p class="hero-desc">Comprehensive auto repair and maintenance — from routine oil changes to complex engine work. If it runs on wheels, we service it. Honest estimates, certified technicians, and work done right the first time.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Contact Us ↓</a>
+        <a href="#services" class="btn-secondary">See What We Do</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">20<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">5K<span>+</span></div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div>
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="card-mini">
+        <div class="card-mini-icon">🔧</div>
+        <div>
+          <div class="card-mini-label">Current Status</div>
+          <div class="card-mini-value" id="status-text">Checking...</div>
+        </div>
+        <div class="card-mini-dot" id="status-dot"></div>
+      </div>
+      <div class="card-mini">
+        <div class="card-mini-icon">⏱</div>
+        <div>
+          <div class="card-mini-label">Quick Service</div>
+          <div class="card-mini-value">Same-Day Available</div>
+        </div>
+      </div>
+      <div class="card-mini">
+        <div class="card-mini-icon">💬</div>
+        <div>
+          <div class="card-mini-label">Free Estimates</div>
+          <div class="card-mini-value">No Surprise Bills</div>
+        </div>
+      </div>
+      <div class="card-mini">
+        <div class="card-mini-icon">⭐</div>
+        <div>
+          <div class="card-mini-label">Customer Rating</div>
+          <div class="card-mini-value">5.0 Stars</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item">Oil Changes <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Brake Service <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Engine Repair <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Tire Service <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Diagnostics <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Transmission <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Free Estimates <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Same-Day Service <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Oil Changes <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Brake Service <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Engine Repair <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Tire Service <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Diagnostics <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Transmission <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Free Estimates <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Same-Day Service <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section-cream">
+  <div class="container">
+    <p class="section-tag">What We Do</p>
+    <h2 class="dark">Our <span>Services</span></h2>
+    <p class="section-sub">From routine maintenance to major repairs — if it's on a car, we handle it. Our shop is equipped to service virtually any make or model.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon-wrap">🛢</div>
+        <div class="service-name">Oil Changes & Maintenance</div>
+        <div class="service-desc">Quick oil changes, fluid checks, filters, belts, and full tune-ups to keep your vehicle running at its best.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">🛑</div>
+        <div class="service-name">Brakes, Tires & Alignments</div>
+        <div class="service-desc">Brake pad replacements, rotor resurfacing, tire rotations, balancing, new tire installations, and wheel alignments.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">⚙️</div>
+        <div class="service-name">Engine & Transmission</div>
+        <div class="service-desc">Full engine diagnostics, rebuilds, and transmission service to tackle even your most serious problems.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">🔌</div>
+        <div class="service-name">Diagnostics & Electrical</div>
+        <div class="service-desc">Check engine light diagnostics, battery testing, alternator repair, and complete electrical system work.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">🎯</div>
+        <div class="service-name">ADAS System Calibration</div>
+        <div class="service-desc">Advanced Driver Assistance System calibration for cameras, sensors, radar, and lane assist — keeping your safety systems accurate after repairs or windshield replacements.</div>
+      </div>
+    </div>
+
+    <div class="full-service-banner">
+      <div class="fsb-icon">🔩</div>
+      <div>
+        <div class="fsb-title">We Work on Almost Everything</div>
+        <div class="fsb-text">Suspension, steering, AC & heating, cooling systems, exhaust, timing belts, wheel alignments, water pumps, and more — if it's on your car, chances are we can fix it. Not sure if we cover your repair? Just call us.</div>
+      </div>
+      <a href="#contact" class="btn-primary" style="flex-shrink:0; white-space:nowrap;">See Contact Info →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="section-dark">
+  <div class="container">
+    <div class="why-left">
+      <p class="section-tag-light">Why Choose Us</p>
+      <h2 class="light">Auto service you can <span>trust.</span></h2>
+      <p class="section-sub-light">We believe in honest work, fair pricing, and treating every customer like family. That's been our promise from day one.</p>
+    </div>
+    <div class="why-right">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div>
+          <div class="why-title">Transparent Pricing</div>
+          <div class="why-text">We give you a clear estimate before any work begins — no hidden fees, no surprises on your bill.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div>
+          <div class="why-title">Certified Technicians</div>
+          <div class="why-text">Our mechanics are experienced, certified, and passionate about getting the job done right the first time.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div>
+          <div class="why-title">Fast Turnaround</div>
+          <div class="why-text">We respect your time. Most services are completed same-day so you're not left without your vehicle.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div>
+          <div class="why-title">Family-Owned & Local</div>
+          <div class="why-text">We're your neighbors, not a franchise. We care about this community and the people who live here.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-white">
+  <div class="container">
+    <p class="section-tag">Get In Touch</p>
+    <h2 class="dark">Find <span>Us</span></h2>
+    <p class="section-sub">We'd love to hear from you. Stop by, give us a call, or send us an email — we're happy to answer any questions.</p>
+
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="info-icon">📍</div>
+        <div class="info-label">Address</div>
+        <div class="info-value">1585 SE River Rd<br>Hillsboro, OR 97123</div>
+      </div>
+      <div class="contact-card">
+        <div class="info-icon">📞</div>
+        <div class="info-label">Phone</div>
+        <div class="info-value"><a href="tel:5036409229">(503) 640-9229</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="info-icon">🕐</div>
+        <div class="info-label">Hours</div>
+        <div class="info-value">
+          <table class="hours-table">
+            <tr><td>Monday – Friday</td><td>8:00 AM – 5:30 PM</td></tr>
+            <tr><td>Saturday – Sunday</td><td>Closed</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Good News <span>Auto</span> Service LLC LLC</div>
+      <p class="footer-tagline">Honest auto service for Hillsboro drivers. Family-owned, community-focused, and always on your side.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Oil Changes</a></li>
+        <li><a href="#services">Brakes & Tires</a></li>
+        <li><a href="#services">Engine Repair</a></li>
+        <li><a href="#services">Diagnostics</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Good News Auto Service LLC LLC. All rights reserved.</span>
+    <span class="footer-copy">Hillsboro, Oregon</span>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun, 1=Mon ... 5=Fri, 6=Sat
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    const timeInMinutes = hour * 60 + minute;
+    const openTime = 8 * 60;       // 8:00 AM
+    const closeTime = 17 * 60 + 30; // 5:30 PM
+
+    const isWeekday = day >= 1 && day <= 5;
+    const isDuringHours = timeInMinutes >= openTime && timeInMinutes < closeTime;
+    const isOpen = isWeekday && isDuringHours;
+
+    const statusText = document.getElementById('status-text');
+    const statusDot = document.getElementById('status-dot');
+
+    if (isOpen) {
+      statusText.textContent = 'Open Now';
+      statusDot.style.background = '#3EBF7A';
+      statusDot.style.boxShadow = '0 0 0 3px rgba(62,191,122,0.2)';
+    } else {
+      statusText.textContent = isWeekday ? 'Closed — Opens 8 AM' : 'Closed Today';
+      statusDot.style.background = '#BF3E3E';
+      statusDot.style.boxShadow = '0 0 0 3px rgba(191,62,62,0.2)';
+    }
+  })();
+</script>
+</body>
+</html>
